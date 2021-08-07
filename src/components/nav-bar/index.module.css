@@ -1,0 +1,15 @@
+.navBar {
+  position: sticky;
+  top: 0;
+  background: black;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.navBar span {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-weight: bolder;
+  font-size: 25px;
+}
