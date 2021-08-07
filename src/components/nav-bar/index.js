@@ -1,6 +1,8 @@
 import classes from "./index.module.css";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const cartItems = useSelector((state) => state.cartReducer.items);
   return (
     <nav className={classes.navBar}>
       <span className={classes.logo}>QLS</span>
@@ -10,7 +12,7 @@ const NavBar = () => {
         </li>
         <li>
           <i className="fas fa-cart-plus fa-2x"></i>
-          <span className={classes.qty}>0</span>
+          <span className={classes.qty}>{cartItems.length}</span>
         </li>
       </ul>
     </nav>

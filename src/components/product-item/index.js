@@ -1,10 +1,16 @@
 import classes from "./index.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProductItem = ({ item }) => {
-  // const state = useSelector((state) => console.log(state));
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartReducer.items);
+  console.log(cartItems);
+  const inCart = cartItems.find((cartItem) => cartItem.id === item.id);
   const handlerAddQty = () => {
-    console.log(item);
+    dispatch({ type: "ADD", value: item });
+  };
+  const handlerAddToCart = () => {
+    dispatch({ type: "ADD", value: item });
   };
   return (
     <div className={classes.item}>
@@ -16,7 +22,11 @@ const ProductItem = ({ item }) => {
         <p>{item.cartQuantity}</p>
         <button>-</button>
       </div>
-      <button className={classes.addToCart}>Add to Cart</button>
+      {!inCart && (
+        <button onClick={handlerAddToCart} className={classes.addToCart}>
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 };

@@ -39,7 +39,35 @@ const cartInitialState = {
 
 const cartReducer = (state = cartInitialState, action) => {
   if (action.type === "ADD") {
-    console.log(action);
+    if (state.items.length === 0) {
+      ++action.value.cartQuantity;
+      return {
+        items: [action.value],
+        products,
+      };
+    } else {
+      const item = state.items.find((item) => item.id === action.value.id);
+      if (!item) {
+        console.log("item not found");
+        ++action.value.cartQuantity;
+        return {
+          items: [...state.items, action.value],
+          products,
+        };
+      } else {
+        console.log("item found");
+        for (let i of state.items) {
+          if (i.id === item.id) {
+            ++i.cartQuantity;
+          }
+        }
+        return {
+          items: [...state.items],
+          products,
+        };
+      }
+    }
+  } else if (action.type === "REMOVE") {
   }
   return cartInitialState;
 };
