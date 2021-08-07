@@ -6,11 +6,17 @@ const ProductItem = ({ item }) => {
   const cartItems = useSelector((state) => state.cartReducer.items);
   console.log(cartItems);
   const inCart = cartItems.find((cartItem) => cartItem.id === item.id);
+  if (!inCart) {
+    item.cartQuantity = 0;
+  }
   const handlerAddQty = () => {
     dispatch({ type: "ADD", value: item });
   };
   const handlerAddToCart = () => {
     dispatch({ type: "ADD", value: item });
+  };
+  const handlerRemoveQty = () => {
+    dispatch({ type: "REMOVE", value: item });
   };
   return (
     <div className={classes.item}>
@@ -20,7 +26,7 @@ const ProductItem = ({ item }) => {
       <div className={classes.cartQuantity}>
         <button onClick={handlerAddQty}>+</button>
         <p>{item.cartQuantity}</p>
-        <button>-</button>
+        <button onClick={handlerRemoveQty}>-</button>
       </div>
       {!inCart && (
         <button onClick={handlerAddToCart} className={classes.addToCart}>
