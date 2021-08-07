@@ -6,7 +6,7 @@
   padding: 0 20px;
 }
 
-.navBar span {
+.logo {
   display: flex;
   align-items: center;
   float: left;
@@ -43,7 +43,7 @@
   z-index: 0;
 }
 
-.navBar ul li span {
+.navBar ul li .qty {
   z-index: 10;
   position: relative;
   left: 0px;

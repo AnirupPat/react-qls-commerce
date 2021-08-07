@@ -3,12 +3,14 @@ import classes from "./index.module.css";
 const NavBar = () => {
   return (
     <nav className={classes.navBar}>
-      <span>QLS</span>
+      <span className={classes.logo}>QLS</span>
       <ul>
-        <li>About Us</li>
         <li>
-          <i class="fas fa-cart-plus fa-2x"></i>
-          <span>0</span>
+          <span>About Us</span>
+        </li>
+        <li>
+          <i className="fas fa-cart-plus fa-2x"></i>
+          <span className={classes.qty}>0</span>
         </li>
       </ul>
     </nav>

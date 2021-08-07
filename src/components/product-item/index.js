@@ -1,6 +1,8 @@
 import classes from "./index.module.css";
+import { useSelector } from "react-redux";
 
 const ProductItem = ({ item }) => {
+  // const state = useSelector((state) => console.log(state));
   const handlerAddQty = () => {
     console.log(item);
   };

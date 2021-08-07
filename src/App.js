@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "./App.module.css";
 import NavBar from "./components/nav-bar";
 import ProductList from "./components/product-list";
+import { useSelector } from "react-redux";
 
 const PRODUCTS = [
   {
@@ -30,31 +31,12 @@ const PRODUCTS = [
   },
 ];
 function App() {
-  const [state, setState] = useState({
-    cart: {
-      items: [],
-    },
-    products: [],
-  });
-  const products = [...PRODUCTS].map((product, index) => {
-    product.id = index + 1;
-    product.image = `/images/items/${product.name.toLocaleLowerCase()}.png`;
-    product.cartQuantity = 0;
-    return product;
-  });
-  useEffect(() => {
-    setState({
-      cart: {
-        items: [],
-      },
-      products,
-    });
-  }, []);
+  const products = useSelector((state) => state.cartReducer.products);
 
   return (
     <React.Fragment>
       <NavBar />
-      <ProductList products={state.products} />
+      <ProductList products={products} />
     </React.Fragment>
   );
 }
