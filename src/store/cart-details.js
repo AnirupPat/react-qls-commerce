@@ -91,6 +91,11 @@ const cartReducer = (state = cartInitialState, action) => {
           products,
         };
       }
+    } else {
+      return {
+        items: [...state.items],
+        products,
+      };
     }
   }
   return cartInitialState;
